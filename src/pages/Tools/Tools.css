@@ -1,0 +1,5 @@
+.tools-list { margin-top: 65px; border-top: 1px solid var(--line); }
+.tool-row { display: grid; grid-template-columns: 60px 1fr 1fr; align-items: center; gap: 20px; padding: 25px 5px; border-bottom: 1px solid var(--line); }
+.tool-row h3 { font-size: clamp(20px, 3vw, 32px); }
+.tool-row p { color: var(--muted); font-size: 13px; }
+@media (max-width: 600px) { .tool-row { grid-template-columns: 35px 1fr; } .tool-row p { grid-column: 2; } }

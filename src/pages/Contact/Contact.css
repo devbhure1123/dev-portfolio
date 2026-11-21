@@ -1,0 +1,10 @@
+.contact-page { display: flex; align-items: center; }
+.contact-page h1 { max-width: 950px; }
+.contact-card { width: min(600px, 100%); margin-top: 55px; padding: 25px; display: flex; align-items: center; gap: 20px; border: 1px solid #ffffffaa; border-radius: 22px; background: #ffffff80; backdrop-filter: blur(18px); box-shadow: 0 15px 45px #0000000b, inset 0 1px 1px white; transition: transform .3s; }
+.contact-card:hover { transform: translateY(-5px); }
+.contact-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 16px; background: #e7e7e1; }
+.contact-card > span:nth-child(2) { flex: 1; }
+.contact-card small, .contact-card strong { display: block; }
+.contact-card small { color: var(--muted); font-size: 9px; letter-spacing: .12em; margin-bottom: 8px; }
+.contact-card strong { font-size: 16px; }
+.contact-note { margin-top: 15px; color: var(--muted); font-size: 11px; }
