@@ -1,52 +1,82 @@
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Palette, Layers, PenTool, Megaphone, Target, Code2 } from 'lucide-react'
+import heroBackground from '../../assets/hero-bg.webp'
 import Button from '../../components/common/Button'
 import Reveal from '../../components/animations/Reveal'
-import { projects } from '../../data/site'
 import './Home.css'
+
+const bannerItems = [
+  { label: 'UI/UX Design', icon: Palette },
+  { label: 'Figma', icon: Layers },
+  { label: 'Graphic Design', icon: PenTool },
+  { label: 'Social Media', icon: Megaphone },
+  { label: 'Meta Ads', icon: Target },
+  { label: 'Frontend Development', icon: Code2 },
+]
+
+function SkillBanner() {
+  return (
+    <section className="skill-banner" aria-label="Creative skills and interests">
+      <div className="skill-banner-heading">WHAT I LOVE TO EXPLORE</div>
+      <div className="hero-marquee">
+        <div className="hero-marquee-track">
+          {[...bannerItems, ...bannerItems].map((item, index) => {
+            const Icon = item.icon
+            return (
+              <div className="marquee-item" key={`${item.label}-${index}`}>
+                <span className="marquee-icon"><Icon size={20} /></span>
+                <span>{item.label}</span>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function Home() {
   return (
     <div className="page home-page">
-      <section className="hero section">
+      <section
+        className="hero section"
+        style={{ "--hero-bg": `url(${heroBackground})` }}
+      >
         <div className="hero-content">
           <Reveal>
-            <div className="availability">
-              <span className="availability-dot" />
-              AVAILABLE FOR FREELANCE PROJECTS
-            </div>
-
-            <p className="eyebrow hero-eyebrow">
-              UI/UX DESIGNER <span>✳</span> FULL STACK DEVELOPER
+            <p className="hero-label">
+              <span className="hero-label-dot" />
+              UI/UX DESIGNER <span className="hero-label-divider">✳</span> FRONTEND DEVELOPER
             </p>
-
             <h1>
-              Designing digital
-              <br />
-              experiences that <span>feel different.</span>
+              Turning Ideas Into
+              <span> Digital Experiences.</span>
             </h1>
-
             <p className="hero-description">
-              I combine thoughtful design, creative technology and motion
-              to build meaningful digital experiences.
+              I turn random ideas into designs that make people stop, explore, and remember.
             </p>
-
-            <div className="hero-actions">
-              <Button href="/projects">
-                Explore My Work
-              </Button>
-            </div>
+            <a href="#intro" className="scroll-cue">
+              <span className="scroll-cue-icon"><ArrowDown size={16} /></span>
+              <span>SCROLL TO EXPLORE</span>
+            </a>
           </Reveal>
         </div>
 
-        <a href="#intro" className="scroll-cue">
-          <ArrowDown size={17} /> SCROLL TO EXPLORE
-        </a>
+        <div className="hero-actions">
+          <Button href="/projects" variant="hero-button hero-button-primary">Explore My Work</Button>
+          <Button href="/contact" variant="hero-button hero-button-secondary">Let's Connect</Button>
+        </div>
       </section>
+
+      <SkillBanner />
 
       <section className="section intro-section" id="intro">
         <Reveal>
           <p className="eyebrow">01 / THE INTRODUCTION</p>
           <h2>Good design is not just what you see. It's what you <span>experience.</span></h2>
+          <p className="page-lead">
+            I enjoy exploring visual ideas, creating thoughtful interfaces and learning how design
+            meets technology.
+          </p>
         </Reveal>
       </section>
 
@@ -55,29 +85,16 @@ export default function Home() {
           <div className="section-heading">
             <div>
               <p className="eyebrow">02 / SELECTED WORK</p>
-              <h2>Things I've created.</h2>
+              <h2>Ideas brought to life.</h2>
             </div>
             <a className="text-link" href="/projects">
-              All projects <ArrowUpRight size={17} />
+              Explore projects <ArrowUpRight size={17} />
             </a>
           </div>
+          <p className="page-lead">
+            Explore my UI/UX concepts, visual designs and creative experiments.
+          </p>
         </Reveal>
-        <div className="project-grid">
-          {projects.map((project) => (
-            <Reveal key={project.number}>
-              <a href="/projects" className="project-card">
-                <div className="project-art">
-                  <span>{project.number}</span>
-                  <ArrowUpRight />
-                </div>
-                <div className="project-meta">
-                  <div><h3>{project.title}</h3><p>{project.category}</p></div>
-                  <span>{project.year}</span>
-                </div>
-              </a>
-            </Reveal>
-          ))}
-        </div>
       </section>
 
       <section className="section home-cta">

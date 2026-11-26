@@ -12,6 +12,7 @@ export const navigation = [
   { label: 'Tech', path: '/tech' },
   { label: 'Tools', path: '/tools' },
   { label: 'About', path: '/about' },
+  { label: 'Experience', path: '/experience' },
   { label: 'Contact', path: '/contact' },
 ]
 

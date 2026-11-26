@@ -1,0 +1,433 @@
+.experience-page {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.experience-page::before {
+  content: "";
+  position: absolute;
+  inset: 0 -15%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 25%, #b9a5ff45 0%, transparent 42%),
+    radial-gradient(ellipse at 85% 45%, #8dcaff40 0%, transparent 42%);
+  filter: blur(45px);
+}
+
+.experience-heading {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.experience-heading h1 {
+  max-width: 750px;
+  margin: 12px auto 0;
+}
+
+.experience-heading h1 span {
+  color: #7959ed;
+}
+
+.experience-subtitle {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.experience-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(45px, 7vw, 100px);
+  max-width: 1120px;
+  margin: 85px auto 40px;
+}
+
+.experience-visual {
+  position: relative;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.mamo-sticky {
+  position: sticky;
+  top: 145px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0;
+}
+
+.mamo-orbit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(290px, 100%);
+  aspect-ratio: 1;
+  border: 1px solid #e5dcff;
+  border-radius: 50%;
+  background: #211d31;
+  box-shadow:
+    12px 12px 28px #00000013,
+    -12px -12px 28px #ffffffb0,
+    inset 2px 2px 5px #00000008,
+    inset -2px -2px 5px #ffffffa0;
+}
+
+[data-theme="dark"] .mamo-orbit {
+  box-shadow:
+    12px 12px 28px #00000055,
+    -12px -12px 28px #ffffff0a,
+    inset 2px 2px 5px #00000035,
+    inset -2px -2px 5px #ffffff08;
+}
+
+
+
+.mamo-logo-holder {
+  display: grid;
+  place-items: center;
+  width: 90%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    inset 5px 5px 12px #00000012,
+    inset -5px -5px 12px #ffffff;
+}
+
+.mamo-logo-holder img {
+  display: block;
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.mamo-caption {
+  margin-top: 25px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .2em;
+}
+
+@keyframes mamo-orbit-rotate {
+  to { transform: rotate(360deg); }
+}
+
+.experience-details {
+  min-width: 0;
+  padding: 34px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: 10px 10px 25px #0000000b, -8px -8px 22px #ffffff80;
+}
+
+[data-theme="dark"] .experience-details {
+  box-shadow: 10px 10px 25px #00000030, -8px -8px 22px #ffffff08;
+}
+
+.experience-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.experience-type {
+  color: #7959ed;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.experience-card-header h2 {
+  margin: 10px 0 5px;
+  color: var(--text);
+  font-size: clamp(22px, 2.5vw, 29px);
+  line-height: 1.2;
+}
+
+.experience-card-header h3 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.experience-duration {
+  padding: 8px 13px;
+  border-radius: 20px;
+  color: #7959ed;
+  background: #7959ed18;
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px 20px;
+  margin: 24px 0;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.experience-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.experience-meta svg {
+  flex-shrink: 0;
+  color: #7959ed;
+}
+
+.experience-description {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.responsibilities-label {
+  margin: 28px 0 14px;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.experience-responsibilities {
+  display: grid;
+  gap: 13px;
+}
+
+.responsibility-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--bg);
+  box-shadow: 5px 5px 12px #00000008, -5px -5px 12px #ffffff70;
+}
+
+[data-theme="dark"] .responsibility-card {
+  box-shadow: 5px 5px 12px #00000025, -5px -5px 12px #ffffff06;
+}
+
+.responsibility-icon {
+  display: grid;
+  flex: 0 0 40px;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: #7959ed;
+  background: #7959ed18;
+}
+
+.responsibility-card h4 {
+  margin: 1px 0 6px;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.responsibility-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 850px) {
+  .experience-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    margin-top: 55px;
+  }
+
+  .mamo-sticky {
+    position: relative;
+    top: auto;
+  }
+
+  .mamo-orbit {
+    width: 230px;
+  }
+
+  .experience-details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .experience-heading h1 {
+    font-size: 28px;
+  }
+
+  .experience-layout {
+    margin-top: 35px;
+  }
+
+  .mamo-orbit {
+    width: 195px;
+  }
+
+  .experience-details {
+    padding: 23px 18px;
+  }
+
+  .experience-card-header {
+    flex-direction: column;
+  }
+
+  .experience-meta {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  
+}
+
+/* MaMo circular logo — reference style */
+.mamo-orbit {
+  border: 0;
+  background: #f5f3fc;
+  box-shadow: 8px 8px 22px #00000012, -8px -8px 22px #ffffff;
+}
+
+[data-theme="dark"] .mamo-orbit {
+  background: #211d31;
+  box-shadow: 8px 8px 22px #00000065, -8px -8px 22px #ffffff12;
+}
+
+
+
+
+
+.mamo-logo-holder {
+  position: relative;
+  z-index: 3;
+  width: 84%;
+  border: 0;
+  box-shadow: none;
+}
+
+
+/* FIX: Visible circular rotating dots */
+
+
+
+
+/* Clean MaMo rotating dots */
+.mamo-orbit {
+  border: 1px solid #d8cfee;
+}
+
+[data-theme="dark"] .mamo-orbit {
+  border-color: #665b7d;
+}
+
+
+
+@keyframes mamo-dots-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Three separate circular dot lines */
+.mamo-orbit {
+  border: 0.75px solid #d8cfee;
+}
+
+[data-theme="dark"] .mamo-orbit {
+  border-color: #665b7d;
+}
+
+
+
+.mamo-logo-holder {
+  width: 80%;
+}
+
+@keyframes mamo-dots-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 40 dots: Red -> Orange -> Yellow on one circular path */
+.mamo-orbit {
+  border: 0.75px solid #d8cfee;
+}
+
+[data-theme="dark"] .mamo-orbit {
+  border-color: #665b7d;
+}
+
+.mamo-orbit-dots {
+  position: absolute;
+  inset: 5px;
+  z-index: 2;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 50.00% 2.00% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 57.51% 2.59% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 64.83% 4.35% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 71.79% 7.23% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 78.21% 11.17% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 83.94% 16.06% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 88.83% 21.79% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 92.77% 28.21% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 95.65% 35.17% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 97.41% 42.49% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 98.00% 50.00% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 97.41% 57.51% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 95.65% 64.83% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff3030 0 1.5px, transparent 2px) 92.77% 71.79% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 88.83% 78.21% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 83.94% 83.94% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 78.21% 88.83% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 71.79% 92.77% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 64.83% 95.65% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 57.51% 97.41% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 50.00% 98.00% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 42.49% 97.41% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 35.17% 95.65% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 28.21% 92.77% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 21.79% 88.83% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 16.06% 83.94% / 5px 5px no-repeat,
+    radial-gradient(circle, #ff8a00 0 1.5px, transparent 2px) 11.17% 78.21% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 7.23% 71.79% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 4.35% 64.83% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 2.59% 57.51% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 2.00% 50.00% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 2.59% 42.49% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 4.35% 35.17% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 7.23% 28.21% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 11.17% 21.79% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 16.06% 16.06% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 21.79% 11.17% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 28.21% 7.23% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 35.17% 4.35% / 5px 5px no-repeat,
+    radial-gradient(circle, #ffd400 0 1.5px, transparent 2px) 42.49% 2.59% / 5px 5px no-repeat;
+  animation: mamo-dots-spin 8s linear infinite;
+}
+
+@keyframes mamo-dots-spin {
+  to { transform: rotate(360deg); }
+}

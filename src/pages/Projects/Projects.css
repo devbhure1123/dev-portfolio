@@ -1,3 +1,230 @@
-.projects-list { margin-top: 70px; }
-.projects-list .project-art { min-height: 330px; }
-@media (max-width: 760px) { .projects-list .project-art { min-height: 240px; } }
+.projects-page {
+  overflow: hidden;
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px 28px;
+  margin-top: 70px;
+}
+
+.project-card {
+  min-width: 0;
+}
+
+.project-art {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface-soft);
+  isolation: isolate;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.project-card:hover .project-art {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 45px #00000018;
+}
+
+.project-visual-one {
+  background: linear-gradient(135deg, #e8ddff, #c8b5ff);
+}
+
+.project-visual-two {
+  background: linear-gradient(135deg, #d8e9ff, #a9c9ff);
+}
+
+.project-visual-three {
+  background: linear-gradient(135deg, #ffe6d6, #ffc49f);
+}
+
+.project-art-top {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  color: #28243b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.project-preview {
+  position: absolute;
+  inset: 75px 35px 25px;
+  display: grid;
+  place-items: center;
+}
+
+.preview-window {
+  width: 100%;
+  max-width: 390px;
+  overflow: hidden;
+  border: 1px solid #ffffffa8;
+  border-radius: 14px;
+  background: #ffffffd9;
+  box-shadow: 0 20px 45px #29204425;
+  transform: rotate(-3deg);
+  transition: transform .5s ease;
+}
+
+.project-card:hover .preview-window {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.preview-toolbar {
+  display: flex;
+  gap: 5px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e8e5f0;
+}
+
+.preview-toolbar span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c5bfd4;
+}
+
+.preview-content {
+  min-height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 22px;
+  color: #25213a;
+}
+
+.preview-copy {
+  display: grid;
+  gap: 10px;
+  flex: 1;
+}
+
+.preview-label {
+  color: #7657f6;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.preview-copy strong {
+  font-size: clamp(19px, 3vw, 30px);
+  line-height: 1.1;
+}
+
+.preview-copy i {
+  width: 85%;
+  height: 5px;
+  border-radius: 10px;
+  background: #e3dfec;
+}
+
+.preview-copy i:last-child {
+  width: 55%;
+}
+
+.preview-shape {
+  width: 92px;
+  height: 110px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 45px 45px 18px 18px;
+  background: linear-gradient(145deg, #a18aff, #7657f6);
+  color: white;
+  box-shadow: 0 12px 25px #7657f640;
+}
+
+.preview-shape svg {
+  width: 36px;
+  height: 36px;
+}
+
+.project-number {
+  position: absolute;
+  bottom: 18px;
+  left: 24px;
+  color: #28243b99;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.project-arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffffffc9;
+  color: #28243b;
+  transition: transform .3s ease;
+}
+
+.project-card:hover .project-arrow {
+  transform: translate(3px, -3px);
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px 4px 0;
+}
+
+.project-meta h3 {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.project-meta p,
+.project-meta > span {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .projects-list {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 45px;
+  }
+
+  .project-art {
+    min-height: 290px;
+  }
+
+  .project-preview {
+    inset: 65px 22px 25px;
+  }
+
+  .preview-content {
+    min-height: 145px;
+    padding: 16px;
+  }
+
+  .preview-shape {
+    width: 72px;
+    height: 88px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-art,
+  .preview-window,
+  .project-arrow {
+    transition: none;
+  }
+}
