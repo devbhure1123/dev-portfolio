@@ -9,15 +9,15 @@ export const siteConfig = {
 export const navigation = [
   { label: 'Home', path: '/' },
   { label: 'Projects', path: '/projects' },
-  { label: 'Tech', path: '/tech' },
-  { label: 'Tools', path: '/tools' },
   { label: 'About', path: '/about' },
   { label: 'Experience', path: '/experience' },
   { label: 'Contact', path: '/contact' },
 ]
 
 export const projects = [
-  { number: '01', title: 'Project One', category: 'UI/UX Design', year: '2026' },
-  { number: '02', title: 'Project Two', category: 'Web Experience', year: '2026' },
-  { number: '03', title: 'Project Three', category: 'Product Design', year: '2026' },
+  { number: '01', title: 'Project One', category: 'UI/UX Design', year: '2026', description: 'Project description coming soon.' },
+  { number: '02', title: 'Project Two', category: 'Web Experience', year: '2026', description: 'Project description coming soon.' },
+  { number: '03', title: 'Project Three', category: 'Product Design', year: '2026', description: 'Project description coming soon.' },
+  { number: '04', title: 'Project Four', category: 'Web Design', year: '2026', description: 'Project description coming soon.' },
+  { number: '05', title: 'Project Five', category: 'Creative Design', year: '2026', description: 'Project description coming soon.' },
 ]
