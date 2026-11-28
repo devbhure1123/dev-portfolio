@@ -1,0 +1,5 @@
+@import '../Orvion/Orvion.css';
+
+.novique-page .orvion-page-header h1 {
+  letter-spacing: -0.06em;
+}

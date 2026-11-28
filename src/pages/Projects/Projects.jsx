@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Layers, Monitor, Palette, Sparkles, Code2, X, ChevronLeft, ChevronRight, Download } from 'lucide-react'
 import Reveal from '../../components/animations/Reveal'
@@ -27,6 +28,7 @@ const graphicImages = [
 ]
 
 export default function Projects() {
+  const navigate = useNavigate()
   const [selectedImage, setSelectedImage] = useState(null)
 
   const showPrevious = () => {
@@ -73,7 +75,16 @@ export default function Projects() {
           return (
             <motion.article
               key={project.number}
-              className={`bento-card ${visual.className}`}
+              className={`bento-card ${visual.className} ${index === 0 ? 'orvion-bento-card' : index === 1 ? 'novique-bento-card' : index === 2 ? 'lumique-bento-card' : index === 4 ? 'wearwell-bento-card' : ''}`}
+              onClick={index === 0 ? () => navigate('/projects/orvion') : index === 1 ? () => navigate('/projects/novique') : index === 2 ? () => navigate('/projects/lumique') : index === 4 ? () => navigate('/projects/wearwell') : undefined}
+              onKeyDown={[0, 1, 2, 4].includes(index) ? (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault()
+                  navigate(['/projects/orvion', '/projects/novique', '/projects/lumique', '', '/projects/wearwell'][index])
+                }
+              } : undefined}
+              role={[0, 1, 2, 4].includes(index) ? 'link' : undefined}
+              tabIndex={[0, 1, 2, 4].includes(index) ? 0 : undefined}
               initial={{
                 opacity: 0,
                 x: visual.direction,
@@ -89,25 +100,80 @@ export default function Projects() {
             >
               <div className="bento-card-top">
                 <span>PROJECT / {project.number}</span>
-                <span>{project.year}</span>
+                {index > 1 && <span>{project.year}</span>}
               </div>
 
-              <div className="bento-artwork">
-                <div className="bento-glow" />
-                <div className="bento-icon">
-                  <ProjectIcon strokeWidth={1.3} />
+              {index === 0 ? (
+                <div className="orvion-card-media">
+                  <img
+                    src="/images/projects/orvion/cover.png"
+                    alt="ORVION storefront landing page"
+                  />
+                  <div className="orvion-card-overlay">
+                    <div>
+                      <span className="bento-category">UI/UX DESIGN</span>
+                      <h3>ORVION</h3>
+                      <p>{project.description}</p>
+                    </div>
+                    <span className="bento-open"><ArrowUpRight /></span>
+                  </div>
                 </div>
-                <span className="bento-decoration">{project.number}</span>
-              </div>
+              ) : index === 1 ? (
+                <div className="novique-card-media">
+                  <img
+                    src="/images/projects/novique/cover.png"
+                    alt="NOVIQUE premium storefront homepage"
+                  />
+                  <div className="novique-card-overlay">
+                    <div>
+                      <h3>NOVIQUE</h3>
+                      <p>A premium storefront designed for effortless product discovery.</p>
+                    </div>
+                    <span className="bento-open"><ArrowUpRight /></span>
+                  </div>
+                </div>
+              ) : index === 2 ? (
+                <div className="lumique-card-media">
+                  <img src="/images/projects/lumique/cover.png" alt="LUMIQUE SKINCARE storefront" />
+                  <div className="lumique-card-overlay">
+                    <div>
+                      <h3>LUMIQUE SKINCARE</h3>
+                      <p>{project.description}</p>
+                    </div>
+                    <span className="bento-open"><ArrowUpRight /></span>
+                  </div>
+                </div>
+              ) : index === 4 ? (
+                <div className="wearwell-card-media">
+                  <img src="/images/projects/wearwell/cover.png" alt="WEARWELL fashion storefront" />
+                  <div className="wearwell-card-overlay">
+                    <div>
+                      <h3>WEARWELL</h3>
+                      <p>{project.description}</p>
+                    </div>
+                    <span className="bento-open"><ArrowUpRight /></span>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="bento-artwork">
+                    <div className="bento-glow" />
+                    <div className="bento-icon">
+                      <ProjectIcon strokeWidth={1.3} />
+                    </div>
+                    <span className="bento-decoration">{project.number}</span>
+                  </div>
 
-              <div className="bento-info">
-                <div>
-                  <span className="bento-category">{project.category}</span>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-                <span className="bento-open"><ArrowUpRight /></span>
-              </div>
+                  <div className="bento-info">
+                    <div>
+                      <span className="bento-category">{project.category}</span>
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+                    </div>
+                    <span className="bento-open"><ArrowUpRight /></span>
+                  </div>
+                </>
+              )}
             </motion.article>
           )
         })}

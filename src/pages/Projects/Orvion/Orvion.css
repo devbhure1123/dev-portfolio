@@ -1,0 +1,165 @@
+.orvion-page {
+  position: relative;
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 115px 0 80px;
+  color: var(--text);
+}
+
+.orvion-close {
+  position: fixed;
+  top: 28px;
+  right: 32px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--glass-bg);
+  color: var(--text);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition: transform .3s ease, background .3s ease;
+}
+
+.orvion-close:hover {
+  transform: rotate(90deg);
+  background: var(--surface-soft);
+}
+
+.orvion-header {
+  max-width: 760px;
+  margin-bottom: 75px;
+}
+
+.orvion-header h1 {
+  margin: 18px 0;
+  font-size: clamp(64px, 12vw, 130px);
+  line-height: .95;
+  letter-spacing: -.075em;
+}
+
+.orvion-header > p:last-child {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.7;
+}
+
+.orvion-case-study,
+.orvion-design {
+  margin-top: 75px;
+}
+
+.orvion-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.orvion-section-heading span {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.orvion-section-heading h2 {
+  margin: 9px 0 0;
+  font-size: clamp(26px, 4vw, 42px);
+  letter-spacing: -.04em;
+}
+
+.orvion-section-heading a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 17px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  color: var(--text);
+  background: var(--glass-bg);
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .3s ease, transform .3s ease;
+}
+
+.orvion-section-heading a:hover {
+  background: var(--surface-soft);
+  transform: translateY(-3px);
+}
+
+.orvion-section-heading a svg,
+.orvion-back-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.orvion-pdf-viewer {
+  display: block;
+  width: 100%;
+  height: min(85vh, 950px);
+  min-height: 600px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.orvion-design-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.orvion-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 65px;
+  color: var(--text);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.orvion-back-link:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 650px) {
+  .orvion-page {
+    width: min(100% - 32px, 1200px);
+    padding-top: 100px;
+  }
+
+  .orvion-close {
+    top: 16px;
+    right: 16px;
+  }
+
+  .orvion-header {
+    margin-bottom: 55px;
+  }
+
+  .orvion-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .orvion-pdf-viewer {
+    height: 70vh;
+    min-height: 430px;
+    border-radius: 12px;
+  }
+
+  .orvion-design-image {
+    border-radius: 12px;
+  }
+}
