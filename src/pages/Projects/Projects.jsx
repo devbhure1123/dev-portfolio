@@ -25,11 +25,24 @@ const graphicImages = [
   'career.png',
   'digital-marketing.png',
   'intern-graphic-designer.png',
+  'graphic-11.png',
+  'graphic-12.png',
+  'graphic-13.png',
+  'graphic-14.png',
+  'graphic-15.png',
+  'graphic-16.png',
+  'graphic-17.png',
 ]
+
+const mockupImages = Array.from(
+  { length: 15 },
+  (_, index) => `mockup-${String(index + 1).padStart(2, '0')}.png`
+)
 
 export default function Projects() {
   const navigate = useNavigate()
   const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedMockup, setSelectedMockup] = useState(null)
 
   const showPrevious = () => {
     setSelectedImage((current) => (current - 1 + graphicImages.length) % graphicImages.length)
@@ -75,16 +88,16 @@ export default function Projects() {
           return (
             <motion.article
               key={project.number}
-              className={`bento-card ${visual.className} ${index === 0 ? 'orvion-bento-card' : index === 1 ? 'novique-bento-card' : index === 2 ? 'lumique-bento-card' : index === 4 ? 'wearwell-bento-card' : ''}`}
-              onClick={index === 0 ? () => navigate('/projects/orvion') : index === 1 ? () => navigate('/projects/novique') : index === 2 ? () => navigate('/projects/lumique') : index === 4 ? () => navigate('/projects/wearwell') : undefined}
-              onKeyDown={[0, 1, 2, 4].includes(index) ? (event) => {
+              className={`bento-card ${visual.className} ${index === 0 ? 'orvion-bento-card' : index === 1 ? 'novique-bento-card' : index === 2 ? 'lumique-bento-card' : index === 3 ? 'pride-bento-card' : index === 4 ? 'wearwell-bento-card' : ''}`}
+              onClick={index === 0 ? () => navigate('/projects/orvion') : index === 1 ? () => navigate('/projects/novique') : index === 2 ? () => navigate('/projects/lumique') : index === 3 ? () => navigate('/projects/pride') : index === 4 ? () => navigate('/projects/wearwell') : undefined}
+              onKeyDown={[0, 1, 2, 3, 4].includes(index) ? (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                   event.preventDefault()
-                  navigate(['/projects/orvion', '/projects/novique', '/projects/lumique', '', '/projects/wearwell'][index])
+                  navigate(['/projects/orvion', '/projects/novique', '/projects/lumique', '/projects/pride', '/projects/wearwell'][index])
                 }
               } : undefined}
-              role={[0, 1, 2, 4].includes(index) ? 'link' : undefined}
-              tabIndex={[0, 1, 2, 4].includes(index) ? 0 : undefined}
+              role={[0, 1, 2, 3, 4].includes(index) ? 'link' : undefined}
+              tabIndex={[0, 1, 2, 3, 4].includes(index) ? 0 : undefined}
               initial={{
                 opacity: 0,
                 x: visual.direction,
@@ -143,6 +156,17 @@ export default function Projects() {
                     <span className="bento-open"><ArrowUpRight /></span>
                   </div>
                 </div>
+              ) : index === 3 ? (
+                <div className="pride-card-media">
+                  <img src="/images/projects/pride/cover.png" alt="PRIDE music streaming landing page" />
+                  <div className="pride-card-overlay">
+                    <div>
+                      <h3>PRIDE</h3>
+                      <p>{project.description}</p>
+                    </div>
+                    <span className="bento-open"><ArrowUpRight /></span>
+                  </div>
+                </div>
               ) : index === 4 ? (
                 <div className="wearwell-card-media">
                   <img src="/images/projects/wearwell/cover.png" alt="WEARWELL fashion storefront" />
@@ -179,10 +203,38 @@ export default function Projects() {
         })}
       </div>
 
+
+      <section className="mockup-showcase-section">
+        <Reveal>
+          <p className="eyebrow">SELECTED PROJECTS / MOCKUPS</p>
+          <h2>MOCKUP <span>GALLERY.</span></h2>
+          <p className="page-lead">
+            A closer look at my digital product presentations and visual mockups.
+          </p>
+        </Reveal>
+
+        <div className="mockup-marquee">
+          <div className="mockup-marquee-row">
+            <div className="mockup-marquee-track">
+              {[...mockupImages, ...mockupImages].map((image, index) => (
+                <button
+                  className="mockup-gallery-card"
+                  key={`${image}-${index}`}
+                  onClick={() => setSelectedMockup(image)}
+                  aria-label="View and download mockup"
+                >
+                  <img src={`/images/mockup-gallery/${image}`} alt={`Project mockup ${(index % mockupImages.length) + 1}`} />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="graphic-showcase-section">
         <Reveal>
           <p className="eyebrow">CREATIVE WORK / GRAPHIC DESIGN</p>
-          <h2>Designs that <span>make an impact.</span></h2>
+          <h2>SOCIAL MEDIA <span>GRAPHIC DESIGN.</span></h2>
           <p className="page-lead">
             Explore my graphic design creations in an interactive gallery.
           </p>
@@ -216,6 +268,28 @@ export default function Projects() {
           </div>
         </div>
       </section>
+
+
+      {selectedMockup !== null && (
+        <div className="mockup-lightbox" onClick={() => setSelectedMockup(null)}>
+          <button className="mockup-lightbox-close" onClick={() => setSelectedMockup(null)} aria-label="Close preview">
+            <X />
+          </button>
+          <img
+            src={`/images/mockup-gallery/${selectedMockup}`}
+            alt="Selected project mockup"
+            onClick={(event) => event.stopPropagation()}
+          />
+          <a
+            className="mockup-lightbox-download"
+            href={`/images/mockup-gallery/${selectedMockup}`}
+            download
+            onClick={(event) => event.stopPropagation()}
+          >
+            <Download /> Download
+          </a>
+        </div>
+      )}
 
       {selectedImage !== null && (
         <div className="graphic-lightbox" onClick={() => setSelectedImage(null)}>

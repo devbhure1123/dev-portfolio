@@ -335,7 +335,7 @@ MIT License, Copyright (c) ilkhoeri (ilkhoeri) */
   background: transparent;
   box-shadow: none;
   transform:
-    rotateY(calc((360deg / 10) * var(--gallery-index)))
+    rotateY(calc((360deg / 17) * var(--gallery-index)))
     translateZ(var(--gallery-depth));
   backface-visibility: visible;
 }
@@ -393,7 +393,7 @@ MIT License, Copyright (c) ilkhoeri (ilkhoeri) */
 }
 
 .graphic-gallery {
-  --gallery-depth: 340px;
+  --gallery-depth: 520px;
 }
 
 @keyframes graphic-gallery-rotating {
@@ -414,7 +414,7 @@ MIT License, Copyright (c) ilkhoeri (ilkhoeri) */
   }
 
   .graphic-gallery {
-    --gallery-depth: 250px;
+    --gallery-depth: 390px;
   }
 }
 
@@ -845,5 +845,425 @@ MIT License, Copyright (c) ilkhoeri (ilkhoeri) */
   .lumique-card-overlay p,
   .wearwell-card-overlay p {
     font-size: 0.78rem;
+  }
+}
+
+/* PRIDE Project Card */
+.pride-bento-card {
+  cursor: pointer;
+}
+
+.pride-bento-card .bento-card-top {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  right: 22px;
+  z-index: 3;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+}
+
+.pride-card-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.pride-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease, filter 0.7s ease;
+}
+
+.pride-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px;
+  color: #fff;
+  background: linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.82) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.pride-card-overlay h3 {
+  margin: 0 0 8px;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+}
+
+.pride-card-overlay p {
+  max-width: 360px;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.pride-bento-card:hover .pride-card-media img {
+  transform: scale(1.06);
+  filter: blur(4px) brightness(0.65);
+}
+
+.pride-bento-card:hover .pride-card-overlay {
+  opacity: 1;
+}
+
+.pride-card-overlay .bento-open {
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .pride-card-overlay {
+    padding: 18px;
+  }
+
+  .pride-card-overlay p {
+    font-size: 0.78rem;
+  }
+}
+
+/* Full viewport width for Graphic Design Gallery */
+.projects-page {
+  overflow: visible;
+}
+
+.graphic-gallery-stage {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+/* Gallery vertical clipping refinement */
+.graphic-gallery-stage {
+  overflow: visible;
+}
+
+@keyframes graphic-gallery-rotating {
+  from {
+    transform: perspective(1400px) rotateX(-8deg) rotateY(0);
+  }
+  to {
+    transform: perspective(1400px) rotateX(-8deg) rotateY(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graphic-gallery {
+    transform: perspective(1400px) rotateX(-8deg);
+  }
+}
+
+/* Mockup Gallery - 2D Infinite Moving Grid */
+.mockup-showcase-section {
+  margin-top: 110px;
+  padding-block: 20px;
+  overflow: hidden;
+}
+
+.mockup-showcase-section h2 {
+  color: var(--text);
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.15;
+}
+
+.mockup-showcase-section h2 span {
+  color: var(--accent);
+}
+
+.mockup-marquee {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-top: 45px;
+  display: block;
+  overflow: hidden;
+  padding-block: 18px;
+}
+
+.mockup-marquee-row {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mockup-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 22px;
+  animation: mockup-scroll-left 55s linear infinite;
+}
+
+.mockup-marquee:hover .mockup-marquee-track {
+  animation-play-state: paused;
+}
+
+.mockup-gallery-card {
+  flex: 0 0 320px;
+  width: 320px;
+  height: 220px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--glass-bg);
+  cursor: pointer;
+  transition: transform .4s ease, border-color .4s ease;
+}
+
+.mockup-gallery-card:hover {
+  transform: scale(1.035);
+  border-color: var(--accent);
+}
+
+.mockup-gallery-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@keyframes mockup-scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Mockup Fullscreen Preview */
+.mockup-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 65px;
+  background: rgba(5, 8, 18, .96);
+  backdrop-filter: blur(16px);
+}
+
+.mockup-lightbox > img {
+  display: block;
+  max-width: 90vw;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.mockup-lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  color: white;
+  cursor: pointer;
+}
+
+.mockup-lightbox-download {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 22px;
+  border-radius: 30px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .mockup-gallery-card {
+    flex-basis: 240px;
+    width: 240px;
+    height: 170px;
+  }
+
+  .mockup-lightbox {
+    padding: 55px 18px;
+  }
+
+  .mockup-lightbox > img {
+    max-width: 100%;
+    max-height: 75vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mockup-marquee-track {
+    animation: none;
+  }
+}
+
+/* Mockup Gallery - 2D Infinite Moving Grid */
+.mockup-showcase-section {
+  margin-top: 110px;
+  padding-block: 20px;
+  overflow: hidden;
+}
+
+.mockup-showcase-section h2 {
+  color: var(--text);
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.15;
+}
+
+.mockup-showcase-section h2 span {
+  color: var(--accent);
+}
+
+.mockup-marquee {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-top: 45px;
+  display: block;
+  overflow: hidden;
+  padding-block: 18px;
+}
+
+.mockup-marquee-row {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mockup-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 22px;
+  animation: mockup-scroll-left 55s linear infinite;
+}
+
+.mockup-marquee:hover .mockup-marquee-track {
+  animation-play-state: paused;
+}
+
+.mockup-gallery-card {
+  flex: 0 0 320px;
+  width: 320px;
+  height: 220px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--glass-bg);
+  cursor: pointer;
+  transition: transform .4s ease, border-color .4s ease;
+}
+
+.mockup-gallery-card:hover {
+  transform: scale(1.035);
+  border-color: var(--accent);
+}
+
+.mockup-gallery-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@keyframes mockup-scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes mockup-scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* Mockup Fullscreen Preview */
+.mockup-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 65px;
+  background: rgba(5, 8, 18, .96);
+  backdrop-filter: blur(16px);
+}
+
+.mockup-lightbox > img {
+  display: block;
+  max-width: 90vw;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.mockup-lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  color: white;
+  cursor: pointer;
+}
+
+.mockup-lightbox-download {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 22px;
+  border-radius: 30px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .mockup-gallery-card {
+    flex-basis: 240px;
+    width: 240px;
+    height: 170px;
+  }
+
+  .mockup-lightbox {
+    padding: 55px 18px;
+  }
+
+  .mockup-lightbox > img {
+    max-width: 100%;
+    max-height: 75vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mockup-marquee-track {
+    animation: none;
   }
 }
