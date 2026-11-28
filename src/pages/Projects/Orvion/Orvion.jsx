@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { X, Download, ArrowUpRight } from 'lucide-react'
 import './Orvion.css'
+import PDFViewer from '../../../components/PDFViewer/PDFViewer'
 
 export default function Orvion() {
   const navigate = useNavigate()
@@ -35,11 +36,7 @@ export default function Orvion() {
           </a>
         </div>
 
-        <iframe
-          className="orvion-pdf-viewer"
-          src="/pdfs/orvion/case-study.pdf#toolbar=0&navpanes=0&scrollbar=0"
-          title="ORVION UI/UX Case Study"
-        />
+        <PDFViewer file="/pdfs/orvion/case-study.pdf" title="ORVION UI/UX Case Study" />
       </section>
 
       <section className="orvion-design">

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { X, ArrowLeft, Download } from 'lucide-react'
 import './Novique.css'
+import PDFViewer from '../../../components/PDFViewer/PDFViewer'
 
 export default function Novique() {
   const navigate = useNavigate()
@@ -24,11 +25,7 @@ export default function Novique() {
             <Download size={16} /> Download PDF
           </a>
         </div>
-        <iframe
-          className="orvion-pdf-viewer"
-          src="/pdfs/novique/case-study.pdf#toolbar=0&navpanes=0&scrollbar=0"
-          title="NOVIQUE UI/UX Case Study"
-        />
+        <PDFViewer file="/pdfs/novique/case-study.pdf" title="NOVIQUE UI/UX Case Study" />
       </section>
 
       <section className="orvion-ui-design">

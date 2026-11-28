@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { X, ArrowLeft, Download } from 'lucide-react'
 import './Lumique.css'
+import PDFViewer from '../../../components/PDFViewer/PDFViewer'
 
 export default function Lumique() {
   const navigate = useNavigate()
@@ -17,7 +18,7 @@ export default function Lumique() {
           <h2>CASE STUDY</h2>
           <a href="/pdfs/lumique/case-study.pdf" download><Download size={16} /> Download PDF</a>
         </div>
-        <iframe className="orvion-pdf-viewer" src="/pdfs/lumique/case-study.pdf#toolbar=0&navpanes=0&scrollbar=0" title="LUMIQUE SKINCARE Case Study" />
+        <PDFViewer file="/pdfs/lumique/case-study.pdf" title="LUMIQUE UI/UX Case Study" />
       </section>
       <section className="orvion-ui-design">
         <div className="orvion-section-heading"><h2>UI DESIGN</h2></div>

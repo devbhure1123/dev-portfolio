@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { X, ArrowLeft, Download } from 'lucide-react'
 import './Wearwell.css'
+import PDFViewer from '../../../components/PDFViewer/PDFViewer'
 
 export default function Wearwell() {
   const navigate = useNavigate()
@@ -17,7 +18,7 @@ export default function Wearwell() {
           <h2>CASE STUDY</h2>
           <a href="/pdfs/wearwell/case-study.pdf" download><Download size={16} /> Download PDF</a>
         </div>
-        <iframe className="orvion-pdf-viewer" src="/pdfs/wearwell/case-study.pdf#toolbar=0&navpanes=0&scrollbar=0" title="WEARWELL Case Study" />
+        <PDFViewer file="/pdfs/wearwell/case-study.pdf" title="WEARWELL UI/UX Case Study" />
       </section>
       <section className="orvion-ui-design">
         <div className="orvion-section-heading"><h2>UI DESIGN</h2></div>
